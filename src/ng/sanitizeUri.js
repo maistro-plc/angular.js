@@ -63,7 +63,7 @@ function $$SanitizeUriProvider() {
       var normalizedVal;
       // NOTE: urlResolve() doesn't support IE < 8 so we don't sanitize for that case.
       if (!msie || msie >= 8 ) {
-        normalizedVal = urlResolve(uri).href;
+        normalizedVal = urlResolve(uri && uri.trim()).href;
         if (normalizedVal !== '' && !normalizedVal.match(regex)) {
           return 'unsafe:'+normalizedVal;
         }
